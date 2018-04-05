@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">PillID</string>
+    <string name="medication_list">My Medications</string>
+    <string name="medication_send">View</string>
+    <string name="my_schedule">My Schedule</string>
+    <string name="schedule_send">Schedule</string>
+
+    <string-array name="Main">
+        <item> Schedule </item>
+        <item> Medication </item>
+        <item> Camera </item>
+    </string-array>
+
+    <string-array name="Description">
+        <item> Description 1 </item>
+        <item> Description 2 </item>
+        <item> Description 3 </item>
+        <item> Description 4 </item>
+    </string-array>
+</resources>
