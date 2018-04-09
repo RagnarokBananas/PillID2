@@ -60,7 +60,6 @@ public class Camera extends SurfaceView implements SurfaceHolder.Callback{
             // preview surface does not exist
             return;
         }
-
         // stop preview before making changes
         try {
             mCamera.stopPreview();
@@ -80,8 +79,6 @@ public class Camera extends SurfaceView implements SurfaceHolder.Callback{
             Log.d(TAG, "Error starting camera preview: " + e.getMessage());
         }
     }
-}
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
