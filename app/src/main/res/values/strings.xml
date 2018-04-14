@@ -1,4 +1,4 @@
 <resources>
     <string name="app_name">Camera</string>
-    <string name="image_capture">Capture</string>
+    <string name="Camera">camera</string>
 </resources>
