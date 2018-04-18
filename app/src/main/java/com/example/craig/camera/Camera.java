@@ -18,6 +18,7 @@ import com.google.api.client.json.JsonFactory;
 import com.google.api.client.json.jackson2.JacksonFactory;
 
 import java.io.File;
+import java.io.FileFilter;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -100,10 +101,22 @@ public class Camera extends AppCompatActivity {
                         .withRemoteImageUrl("http://www.greycloaktech.com/wp-content/uploads/2015/07/url-small.jpg")
                         .build();
 
-                //Necessary for uploading a saved image
+                //finds the newest image in the folder to send to Cloudsight
 
-                File savedImage = new File("Android/data/com.example.craig.camera/files/Pictures");
-
+                File fl = new File("Android/data/com.example.craig.camera/files/Pictures");
+                File[] files = fl.listFiles(new FileFilter() {
+                    public boolean accept(File file) {
+                        return file.isFile();
+                    }
+                });
+                long lastMod = Long.MIN_VALUE;
+                File savedImage = null;
+                for (File file : files) {
+                    if (file.lastModified() > lastMod) {
+                        savedImage = file;
+                        lastMod = file.lastModified();
+                    }
+                }
                 //The format used to build the Object that uploads a saved image to CloudS
 
                 CSPostConfig savedImageToPost = CSPostConfig.newBuilder()
@@ -119,6 +132,7 @@ public class Camera extends AppCompatActivity {
 
                 //System.out.println("Post result: " + portResult);
                 //used to print the response from the API^
+
             }
         });
     }
