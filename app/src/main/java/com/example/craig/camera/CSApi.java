@@ -1,3 +1,5 @@
+package com.example.craig.camera;
+
 import com.google.api.client.http.HttpTransport;
 import com.google.api.client.http.GenericUrl;
 import com.google.api.client.http.HttpRequestInitializer;
