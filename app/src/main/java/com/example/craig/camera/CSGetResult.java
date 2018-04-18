@@ -1,3 +1,5 @@
+package com.example.craig.camera;
+
 import com.google.api.client.json.GenericJson;
 import com.google.api.client.util.Key;
 
