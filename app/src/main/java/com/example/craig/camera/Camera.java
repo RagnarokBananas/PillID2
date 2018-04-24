@@ -24,6 +24,8 @@ public class Camera extends AppCompatActivity {
     static final int REQUEST_TAKE_PHOTO = 1;
     private static final int CAMERA_REQUEST = 1888;
     private Intent TPI;
+
+
     private File createImageFile() throws IOException {
         // Create an image file name
         String timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
