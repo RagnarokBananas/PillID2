@@ -3,10 +3,10 @@
     <string name="Camera">camera</string>
 
     <string-array name="Main">
-        <item> Timetable </item>
-        <item> Subjects </item>
-        <item> Faculty </item>
-        <item> Resources </item>
+        <item> Camera </item>
+        <item> Medications </item>
+        <item> Schedule </item>
+        
     </string-array>
 
     <string-array name="Description">
