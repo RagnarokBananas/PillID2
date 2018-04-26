@@ -6,9 +6,11 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.SimpleAdapter;
 import android.widget.TextView;
 import android.content.Intent;
 import android.support.v7.widget.Toolbar;
@@ -45,6 +47,27 @@ public class MainActivity extends AppCompatActivity {
 
         SimpleAdapter simpleAdapter = new SimpleAdapter(this, title, description);
         listView.setAdapter(simpleAdapter);
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                switch (position){
+                    case 0:  {
+                        Intent intent = new Intent(MainActivity.this, Camera.class);
+                        startActivity(intent);
+                        break;
+                    }
+                    case 1:  {
+                        break;
+                    }
+                    case 3:  {
+                        Intent intent = new Intent(MainActivity.this, Schedule.class);
+                        startActivity(intent);
+                        break;
+                    }
+                }
+            }
+        });
     }
 
     public class SimpleAdapter extends BaseAdapter{

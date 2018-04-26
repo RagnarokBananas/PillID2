@@ -6,7 +6,7 @@
         <item> Camera </item>
         <item> Medications </item>
         <item> Schedule </item>
-        
+
     </string-array>
 
     <string-array name="Description">
@@ -17,8 +17,7 @@
     </string-array>
 
 
-
-    <string-array name="Week">
+    <string-array name="Schedule">
         <item> Monday </item>
         <item> Tuesday </item>
         <item> Wednesday </item>
