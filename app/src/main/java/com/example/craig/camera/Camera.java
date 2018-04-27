@@ -11,11 +11,18 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.Toast;
+
+import com.google.api.client.http.HttpTransport;
+import com.google.api.client.http.javanet.NetHttpTransport;
+import com.google.api.client.json.JsonFactory;
+import com.google.api.client.json.jackson2.JacksonFactory;
 
 import java.io.File;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+
 
 public class Camera extends AppCompatActivity {
     static final int REQUEST_IMAGE_CAPTURE = 1;
@@ -25,6 +32,9 @@ public class Camera extends AppCompatActivity {
     private static final int CAMERA_REQUEST = 1888;
     private Intent TPI;
 
+    private static final String API_KEY = "Fa3GonwiTw3RwyIWgNhwVQ";
+    static final HttpTransport HTTP_TRANSPORT = new NetHttpTransport();
+    static final JsonFactory JSON_FACTORY = new JacksonFactory();
 
     private File createImageFile() throws IOException {
         // Create an image file name
@@ -78,11 +88,37 @@ public class Camera extends AppCompatActivity {
         photoButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-
                 dispatchTakePictureIntent();
             }
         });
+        CSApi api = new CSApi(
+                HTTP_TRANSPORT,
+                JSON_FACTORY,
+                API_KEY
+        );
+        File temp = new File("Android\\data\\com.example.craig.camera\\files\\Pictures");
+        CSPostConfig imageToPost2 = CSPostConfig.newBuilder()
+                .withImage(temp)
+                .build();
+        CSPostResult portResult = null;
+        try {
+            portResult = api.postImage(imageToPost2);
+            Thread.sleep(30000);
+            CSGetResult scoredResult = api.getImage(portResult);
+
+        }catch(IOException e){
+            e.printStackTrace();
+        }catch(InterruptedException e){
+            e.printStackTrace();
+        }
+        String stringToParse = portResult.toString();
+        String parseStart = "name\":\"";
+        String parseEnd = "\"}";
+        int imprintIndexStart = stringToParse.indexOf(parseStart);
+        int imprintIndexEnd = stringToParse.indexOf(parseStart);
+        String parsedName = stringToParse.substring(imprintIndexStart,imprintIndexEnd);
+
+        Toast.makeText(this, parsedName, Toast.LENGTH_SHORT).show();
     }
     private void galleryAddPic () {
         Intent mediaScanIntent = new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE);

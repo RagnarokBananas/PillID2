@@ -15,11 +15,15 @@ import android.widget.TextView;
 import android.content.Intent;
 import android.support.v7.widget.Toolbar;
 
+import com.google.api.client.http.HttpTransport;
+import com.google.api.client.http.javanet.NetHttpTransport;
+import com.google.api.client.json.JsonFactory;
+import com.google.api.client.json.jackson2.JacksonFactory;
+
 public class MainActivity extends AppCompatActivity {
 
     private Toolbar toolbar;
     private ListView listView;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
