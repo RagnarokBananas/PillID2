@@ -72,9 +72,15 @@ public class Camera extends AppCompatActivity{
                 finish();
                 startActivityForResult(takePictureIntent, REQUEST_TAKE_PHOTO);
                 mUri = aUri;
-                StartService(mImageView);
+
             }
         }
+        try {
+            Thread.sleep(7000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        StartService(mImageView);
     }
 
     public void onCreate(Bundle savedInstanceState) {

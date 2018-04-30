@@ -3,7 +3,6 @@ package com.example.craig.camera;
 import android.app.IntentService;
 import android.content.Intent;
 import android.util.Log;
-import android.widget.Toast;
 
 import java.io.File;
 import java.io.IOException;
@@ -48,13 +47,6 @@ public class backGroundProcesses extends IntentService {
             e.printStackTrace();
         }
 
-        String stringToParse = scoredResult.getName();
-        String parseStart = "name\":\"";
-        String parseEnd = "\"}";
-        int imprintIndexStart = stringToParse.indexOf(parseStart);
-        int imprintIndexEnd = stringToParse.indexOf(parseEnd);
-        String parsedName = stringToParse.substring(imprintIndexStart, imprintIndexEnd);
-
-        Toast.makeText(this, parsedName, Toast.LENGTH_SHORT).show();
+        String name = scoredResult.getName();
     }
 }
