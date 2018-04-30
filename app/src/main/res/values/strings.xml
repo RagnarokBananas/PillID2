@@ -24,5 +24,112 @@
         <item> Thursday </item>
         <item> Friday </item>
         <item> Saturday </item>
+        <item> Sunday </item>
+    </string-array>
+
+    <string-array name="Monday">
+        <item>Blood Pressure</item>
+        <item>Cholesterol</item>
+        <item>Diabetic</item>
+        <item>Anxiety</item>
+        <item>Misc.</item>
+    </string-array>
+
+    <string-array name="Tuesday">
+        <item>Blood Pressure</item>
+        <item>Cholesterol</item>
+        <item>Diabetic</item>
+        <item>Anxiety</item>
+        <item>Misc.</item>
+    </string-array>
+
+    <string-array name="Wednesday">
+        <item>Blood Pressure</item>
+        <item>Cholesterol</item>
+        <item>Diabetic</item>
+        <item>Anxiety</item>
+        <item>Misc.</item>
+    </string-array>
+
+
+    <string-array name="Thursday">
+        <item>Blood Pressure</item>
+        <item>Cholesterol</item>
+        <item>Diabetic</item>
+        <item>Anxiety</item>
+        <item>Misc.</item>
+    </string-array>
+
+    <string-array name="Friday">
+        <item>Blood Pressure</item>
+        <item>Cholesterol</item>
+        <item>Diabetic</item>
+        <item>Anxiety</item>
+        <item>Misc.</item>
+    </string-array>
+
+    <string-array name="Saturday">
+        <item>Blood Pressure</item>
+        <item>Cholesterol</item>
+        <item>Diabetic</item>
+        <item>Anxiety</item>
+        <item>Misc.</item>
+    </string-array>
+
+    <string-array name="Sunday">
+        <item>Blood Pressure</item>
+        <item>Cholesterol</item>
+        <item>Diabetic</item>
+        <item>Anxiety</item>
+        <item>Misc.</item>
+    </string-array>
+
+    <string-array name="time1">
+        <item>Morning</item>
+        <item>Afternoon</item>
+        <item>Evening</item>
+        <item>Bedtime</item>
+    </string-array>
+
+    <string-array name="time2">
+        <item>Morning</item>
+        <item>Afternoon</item>
+        <item>Evening</item>
+        <item>Bedtime</item>
+    </string-array>
+
+    <string-array name="time3">
+        <item>Morning</item>
+        <item>Afternoon</item>
+        <item>Evening</item>
+        <item>Bedtime</item>
+    </string-array>
+
+    <string-array name="time4">
+        <item>Morning</item>
+        <item>Afternoon</item>
+        <item>Evening</item>
+        <item>Bedtime</item>
+    </string-array>
+
+    <string-array name="time5">
+        <item>Morning</item>
+        <item>Afternoon</item>
+        <item>Evening</item>
+        <item>Bedtime</item>
+    </string-array>
+
+    <string-array name="time6">
+        <item>Morning</item>
+        <item>Afternoon</item>
+        <item>Evening</item>
+        <item>Bedtime</item>
+    </string-array>
+
+    <string-array name="time7">
+        <item>Morning</item>
+        <item>Afternoon</item>
+        <item>Evening</item>
+        <item>Bedtime</item>
     </string-array>
 </resources>

@@ -28,6 +28,7 @@
         </provider>
         <service android:name=".backGroundProcesses"></service>
         <activity android:name=".Camera"></activity>
+>>>>>>> homescreen
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -35,7 +36,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Schedule"></activity>
+        <activity android:name=".Schedule" />
+        <activity android:name=".DetailDay" />
     </application>
 
 </manifest>

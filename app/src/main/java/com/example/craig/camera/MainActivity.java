@@ -64,7 +64,7 @@ public class MainActivity extends AppCompatActivity {
                     case 1:  {
                         break;
                     }
-                    case 3:  {
+                    case 2:  {
                         Intent intent = new Intent(MainActivity.this, Schedule.class);
                         startActivity(intent);
                         break;
