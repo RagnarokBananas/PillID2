@@ -27,12 +27,11 @@ public final class CSApi {
   private final GenericUrl mImageGetUrl;
 
 
-  public CSApi(
-    final HttpTransport transport,
-    final JsonFactory jsonFactory,
-    final String authorizationKey,
-    final String baseUrl
-  ) {
+  public CSApi(final HttpTransport transport,
+          final JsonFactory jsonFactory,
+        final String authorizationKey,
+        final String baseUrl)
+  {
     mAuthorizationKey = authorizationKey;
     mHttpRequestFactory = transport.createRequestFactory(new HttpRequestInitializer() {
       
@@ -55,13 +54,15 @@ public final class CSApi {
   }
 
   public CSPostResult postImage(final CSPostConfig imagePostConfig) throws IOException {
-    final HttpRequest request = mHttpRequestFactory.buildPostRequest(
+        final HttpRequest request = mHttpRequestFactory.buildPostRequest(
       mImagePostUrl,
       imagePostConfig.getContent()
     );
     request.getHeaders()
       .setContentType(CONTENT_TYPE)
       .setAuthorization(String.format(AUTHORIZATION_FORMAT, mAuthorizationKey));
+    request.execute()
+    .parseAs(CSPostResult.class);
     return request.execute().parseAs(CSPostResult.class);
   }
 
