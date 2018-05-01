@@ -132,4 +132,16 @@
         <item>Evening</item>
         <item>Bedtime</item>
     </string-array>
+
+    <string-array name="Medications">
+        <item>Atorvastatin</item>
+        <item>Levothyroxine</item>
+        <item>Lisinopril</item>
+        <item>Omeprazole</item>
+        <item>Metformin</item>
+        <item>Amlodipine</item>
+        <item>Simvastatin</item>
+        <item>Metoprolol Succinate</item>
+        <item>Losartan</item>
+    </string-array>
 </resources>

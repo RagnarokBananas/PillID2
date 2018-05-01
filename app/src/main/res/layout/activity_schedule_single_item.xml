@@ -18,7 +18,7 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/tvWeek"
+            android:id="@+id/lvMain"
             android:text="Days"
             android:layout_marginTop="6dp"
             android:layout_marginLeft="6dp"

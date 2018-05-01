@@ -62,6 +62,8 @@ public class MainActivity extends AppCompatActivity {
                         break;
                     }
                     case 1:  {
+                        Intent intent = new Intent(MainActivity.this, Medications.class);
+                        startActivity(intent);
                         break;
                     }
                     case 2:  {
