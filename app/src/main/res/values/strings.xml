@@ -1,4 +1,145 @@
 <resources>
     <string name="app_name">Camera</string>
     <string name="Camera">camera</string>
+    <string name="login">Login</string>
+    <string name="login_label">OK</string>
+    <string-array name="Main">
+        <item> Camera </item>
+        <item> Medications </item>
+        <item> Schedule </item>
+    </string-array>
+
+    <string-array name="Description">
+        <item> Description 1 </item>
+        <item> Description 2 </item>
+        <item> Description 3 </item>
+        <item> Description 4 </item>
+    </string-array>
+
+    <string-array name="Schedule">
+        <item> Monday </item>
+        <item> Tuesday </item>
+        <item> Wednesday </item>
+        <item> Thursday </item>
+        <item> Friday </item>
+        <item> Saturday </item>
+        <item> Sunday </item>
+    </string-array>
+
+    <string-array name="Monday">
+        <item>Blood Pressure</item>
+        <item>Cholesterol</item>
+        <item>Diabetic</item>
+        <item>Anxiety</item>
+        <item>Misc.</item>
+    </string-array>
+
+    <string-array name="Tuesday">
+        <item>Blood Pressure</item>
+        <item>Cholesterol</item>
+        <item>Diabetic</item>
+        <item>Anxiety</item>
+        <item>Misc.</item>
+    </string-array>
+
+    <string-array name="Wednesday">
+        <item>Blood Pressure</item>
+        <item>Cholesterol</item>
+        <item>Diabetic</item>
+        <item>Anxiety</item>
+        <item>Misc.</item>
+    </string-array>
+
+    <string-array name="Thursday">
+        <item>Blood Pressure</item>
+        <item>Cholesterol</item>
+        <item>Diabetic</item>
+        <item>Anxiety</item>
+        <item>Misc.</item>
+    </string-array>
+
+    <string-array name="Friday">
+        <item>Blood Pressure</item>
+        <item>Cholesterol</item>
+        <item>Diabetic</item>
+        <item>Anxiety</item>
+        <item>Misc.</item>
+    </string-array>
+
+    <string-array name="Saturday">
+        <item>Blood Pressure</item>
+        <item>Cholesterol</item>
+        <item>Diabetic</item>
+        <item>Anxiety</item>
+        <item>Misc.</item>
+    </string-array>
+
+    <string-array name="Sunday">
+        <item>Blood Pressure</item>
+        <item>Cholesterol</item>
+        <item>Diabetic</item>
+        <item>Anxiety</item>
+        <item>Misc.</item>
+    </string-array>
+
+    <string-array name="time1">
+        <item>Morning</item>
+        <item>Afternoon</item>
+        <item>Evening</item>
+        <item>Bedtime</item>
+    </string-array>
+
+    <string-array name="time2">
+        <item>Morning</item>
+        <item>Afternoon</item>
+        <item>Evening</item>
+        <item>Bedtime</item>
+    </string-array>
+
+    <string-array name="time3">
+        <item>Morning</item>
+        <item>Afternoon</item>
+        <item>Evening</item>
+        <item>Bedtime</item>
+    </string-array>
+
+    <string-array name="time4">
+        <item>Morning</item>
+        <item>Afternoon</item>
+        <item>Evening</item>
+        <item>Bedtime</item>
+    </string-array>
+
+    <string-array name="time5">
+        <item>Morning</item>
+        <item>Afternoon</item>
+        <item>Evening</item>
+        <item>Bedtime</item>
+    </string-array>
+
+    <string-array name="time6">
+        <item>Morning</item>
+        <item>Afternoon</item>
+        <item>Evening</item>
+        <item>Bedtime</item>
+    </string-array>
+
+    <string-array name="time7">
+        <item>Morning</item>
+        <item>Afternoon</item>
+        <item>Evening</item>
+        <item>Bedtime</item>
+    </string-array>
+
+    <string-array name="Medications">
+        <item>Atorvastatin</item>
+        <item>Levothyroxine</item>
+        <item>Lisinopril</item>
+        <item>Omeprazole</item>
+        <item>Metformin</item>
+        <item>Amlodipine</item>
+        <item>Simvastatin</item>
+        <item>Metoprolol Succinate</item>
+        <item>Losartan</item>
+    </string-array>
 </resources>

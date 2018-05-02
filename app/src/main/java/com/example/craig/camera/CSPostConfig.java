@@ -1,6 +1,5 @@
 package com.example.craig.camera;
 
-import com.example.craig.camera.CSApi;
 import com.google.api.client.http.MultipartContent;
 import com.google.api.client.http.FileContent;
 import com.google.api.client.http.ByteArrayContent;
