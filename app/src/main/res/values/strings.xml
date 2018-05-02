@@ -1,7 +1,8 @@
 <resources>
     <string name="app_name">Camera</string>
     <string name="Camera">camera</string>
-
+    <string name="login">Login</string>
+    <string name="login_label">OK</string>
     <string-array name="Main">
         <item> Camera </item>
         <item> Medications </item>

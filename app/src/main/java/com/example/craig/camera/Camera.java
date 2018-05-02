@@ -4,8 +4,10 @@ import android.app.Activity;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Environment;
+import android.provider.DocumentsContract;
 import android.provider.MediaStore;
 import android.support.v4.content.FileProvider;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -24,15 +26,13 @@ import java.io.IOException;
 
 
 public class Camera extends AppCompatActivity{
-    static final int REQUEST_IMAGE_CAPTURE = 1;
     String mCurrentPhotoPath;
     private ImageView mImageView;
     static final int REQUEST_TAKE_PHOTO = 10;
     private Uri mUri;
-    private Intent mIntent;
     private String mString;
+    private Intent wmdIntent;
 
-    private static final String API_KEY = "Fa3GonwiTw3RwyIWgNhwVQ";
     static final HttpTransport HTTP_TRANSPORT = new NetHttpTransport();
     static final JsonFactory JSON_FACTORY = new JacksonFactory();
 
@@ -53,10 +53,9 @@ public class Camera extends AppCompatActivity{
     private void dispatchTakePictureIntent() {
         Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
         // Ensure that there's a camera activity to handle the intent
-        Uri aUri = null;
+        Uri aUri;
         if (takePictureIntent.resolveActivity(getPackageManager()) != null) {
             // Create the File where the photo should go
-
             File photoFile = null;
             try {
                 photoFile = createImageFile();
@@ -82,7 +81,8 @@ public class Camera extends AppCompatActivity{
             e.printStackTrace();
         }
 
-        StartService(mImageView);
+        csService(mImageView);
+        //wmdService();
     }
     public void onCreate(Bundle savedInstanceState) {
 
@@ -100,26 +100,31 @@ public class Camera extends AppCompatActivity{
                 dispatchTakePictureIntent();
             }
         });
-    }
-    public void StartService (View view){
-        Intent intent= new Intent(Camera.this, backGroundProcesses.class);
-        MessageReceiver receiver = new MessageReceiver(new Message());
-        if (mString==null){
-            String cut = mUri.toString();
-            int index = cut.indexOf("es/")+3;
-            String name = cut.substring(index);
-            //storage/emulated/0/Android/data/com.example.craig.camera/files/Pictures/
-            String uri = ("/storage/emulated/0/Android/data/com.example.craig.camera/files/Pictures/"+name);
-            intent.putExtra("uri",uri);
-            intent.putExtra("receiver",receiver);
-            startService(intent);
-        }else if (mString.length()>0){
 
-        }else if (mString.length()==0){
-            Log.e("Cloudsight","no string response");
-        }
-    }
 
+    }
+    public void csService (View view){
+        Intent csIntent= new Intent(Camera.this, backGroundProcesses.class);
+        MessageReceiver csReceiver = new MessageReceiver(new Message());
+        String cut = mUri.toString();
+        int index = cut.indexOf("es/") + 3;
+        String name = cut.substring(index);
+        //storage/emulated/0/Android/data/com.example.craig.camera/files/Pictures/
+        String uri = ("/storage/emulated/0/Android/data/com.example.craig.camera/files/Pictures/" + name);
+        csIntent.putExtra("code",1);
+        csIntent.putExtra("uri", uri);
+        csIntent.putExtra("receiver1", csReceiver);
+        startService(csIntent);
+    }
+    /*public void wmdService(){
+        wmdIntent = new Intent(Camera.this, backGroundProcesses.class);
+        wmdIntent.putExtra("code",2);
+        wmdIntent.putExtra("string",mString);
+        startService(wmdIntent);
+    }*/
+    //unused code
+    //commented out to avoid errors
+    //potential delete at a later date if unused
     /*private void galleryAddPic() {
         Intent mediaScanIntent = new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE);
         File f = new File(mCurrentPhotoPath);
@@ -132,10 +137,26 @@ public class Camera extends AppCompatActivity{
             if (resultCode ==1) {
                 String message = resultData.getString("message");
                 mString = message;
+                Toast.makeText(Camera.this, message, Toast.LENGTH_LONG).show();
+                /*setContentView(R.layout.activity_main);
+                while(isFinishing()){
+                    //do nothing
+                }
+                if (!isFinishing()) {
+                    String message = resultData.getString("message");
+                    mString = message;
+                    AlertDialog.Builder mBuilder = new AlertDialog.Builder(Camera.this);
+                    View mView = getLayoutInflater().inflate(R.layout.dialog_login, null);
+                    mBuilder.setView(mView);
+                    final AlertDialog dialog = mBuilder.create();
+                    dialog.show();
+                }*/
+            }/*else if(resultCode == 2){
+                String message = resultData.getString("message");
                 Toast.makeText(Camera.this, message, Toast.LENGTH_SHORT).show();
-            }else if(resultCode == 2){
-
-            }
+            }else if(resultCode == 3){
+                wmdService();
+            }*/
         }
     }
 }

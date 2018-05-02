@@ -11,7 +11,6 @@ public class MessageReceiver extends ResultReceiver{
     public MessageReceiver(Camera.Message message){
         super(new Handler());
         this.message = message;
-
     }
     @Override
     protected void onReceiveResult(int resultCode, Bundle resultData){
