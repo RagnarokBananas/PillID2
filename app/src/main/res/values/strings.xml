@@ -6,7 +6,6 @@
         <item> Camera </item>
         <item> Medications </item>
         <item> Schedule </item>
-
     </string-array>
 
     <string-array name="Description">
@@ -15,7 +14,6 @@
         <item> Description 3 </item>
         <item> Description 4 </item>
     </string-array>
-
 
     <string-array name="Schedule">
         <item> Monday </item>

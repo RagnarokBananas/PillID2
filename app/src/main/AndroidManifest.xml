@@ -26,11 +26,8 @@
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/file_paths" />
         </provider>
-
-        <service android:name=".backGroundProcesses" />
-
-        <activity android:name=".Camera" />
-        >>>>>>> homescreen
+        <service android:name=".backGroundProcesses"></service>
+        <activity android:name=".Camera"></activity>
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

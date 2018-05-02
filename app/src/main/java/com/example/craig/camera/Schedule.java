@@ -125,7 +125,7 @@ public class Schedule extends AppCompatActivity {
                 holder = new ViewHolder();
                 convertView = layoutInflater.inflate(resource, null);
                 holder.ivLogo = (LetterImageView) convertView.findViewById(R.id.ivLetter);
-                holder.tvWeek = (TextView) convertView.findViewById(R.id.tvMain);
+                holder.lvWeek = (TextView) convertView.findViewById(R.id.lvMain);
                 convertView.setTag(holder);
             } else {
                 holder = (ViewHolder) convertView.getTag();
@@ -133,14 +133,14 @@ public class Schedule extends AppCompatActivity {
 
             holder.ivLogo.setOval(true);
             holder.ivLogo.setLetter(week[position].charAt(0));
-            //holder.tvWeek.setText(week[position]);
+            holder.lvWeek.setText(week[position]);
 
             return convertView;
         }
 
         class ViewHolder {
             private LetterImageView ivLogo;
-            private TextView tvWeek;
+            private TextView lvWeek;
         }
     }
 

@@ -2,6 +2,8 @@ package com.example.craig.camera;
 
 import android.app.IntentService;
 import android.content.Intent;
+import android.os.Bundle;
+import android.os.ResultReceiver;
 import android.util.Log;
 
 import java.io.File;
@@ -19,6 +21,8 @@ public class backGroundProcesses extends IntentService {
 
     @Override
     protected void onHandleIntent(Intent intent){
+        ResultReceiver receiver = intent.getParcelableExtra("receiver");
+        String address = intent.getStringExtra("uri");
         CSPostResult postResult;
         CSGetResult scoredResult = null;
         CSApi api = new CSApi(
@@ -26,7 +30,7 @@ public class backGroundProcesses extends IntentService {
                 JSON_FACTORY,
                 API_KEY
         );
-        String address = intent.getStringExtra("uri");
+
         File savedImage = new File(address);
 
         if(!savedImage.exists()){
@@ -46,7 +50,8 @@ public class backGroundProcesses extends IntentService {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-
-        String name = scoredResult.getName();
+        Bundle bundle = new Bundle();
+        bundle.putString("message",scoredResult.getName());
+        receiver.send(1,bundle);
     }
 }

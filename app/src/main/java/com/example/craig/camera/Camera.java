@@ -30,6 +30,7 @@ public class Camera extends AppCompatActivity{
     static final int REQUEST_TAKE_PHOTO = 10;
     private Uri mUri;
     private Intent mIntent;
+    private String mString;
 
     private static final String API_KEY = "Fa3GonwiTw3RwyIWgNhwVQ";
     static final HttpTransport HTTP_TRANSPORT = new NetHttpTransport();
@@ -72,17 +73,17 @@ public class Camera extends AppCompatActivity{
                 finish();
                 startActivityForResult(takePictureIntent, REQUEST_TAKE_PHOTO);
                 mUri = aUri;
-
             }
         }
+
         try {
-            Thread.sleep(7000);
+            Thread.sleep(10000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+
         StartService(mImageView);
     }
-
     public void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
@@ -102,20 +103,39 @@ public class Camera extends AppCompatActivity{
     }
     public void StartService (View view){
         Intent intent= new Intent(Camera.this, backGroundProcesses.class);
-        String cut = mUri.toString();
-        int index = cut.indexOf("es/")+3;
-        String name = cut.substring(index);
-        //storage/emulated/0/Android/data/com.example.craig.camera/files/Pictures/
-        String uri = ("/storage/emulated/0/Android/data/com.example.craig.camera/files/Pictures/"+name);
-        intent.putExtra("uri",uri);
-        startService(intent);
+        MessageReceiver receiver = new MessageReceiver(new Message());
+        if (mString==null){
+            String cut = mUri.toString();
+            int index = cut.indexOf("es/")+3;
+            String name = cut.substring(index);
+            //storage/emulated/0/Android/data/com.example.craig.camera/files/Pictures/
+            String uri = ("/storage/emulated/0/Android/data/com.example.craig.camera/files/Pictures/"+name);
+            intent.putExtra("uri",uri);
+            intent.putExtra("receiver",receiver);
+            startService(intent);
+        }else if (mString.length()>0){
+
+        }else if (mString.length()==0){
+            Log.e("Cloudsight","no string response");
+        }
     }
 
-    private void galleryAddPic() {
+    /*private void galleryAddPic() {
         Intent mediaScanIntent = new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE);
         File f = new File(mCurrentPhotoPath);
         Uri contentUri = Uri.fromFile(f);
         mediaScanIntent.setData(contentUri);
         this.sendBroadcast(mediaScanIntent);
+    }*/
+    public class Message{
+        public void displayMessage(int resultCode, Bundle resultData){
+            if (resultCode ==1) {
+                String message = resultData.getString("message");
+                mString = message;
+                Toast.makeText(Camera.this, message, Toast.LENGTH_SHORT).show();
+            }else if(resultCode == 2){
+
+            }
+        }
     }
 }
