@@ -33,17 +33,17 @@ public class MainActivity extends AppCompatActivity {
         initToolbar();
         setupListView();
     }
-
+//setting up toolbar for main
     private void setupUIViews(){
         toolbar = (Toolbar)findViewById(R.id.ToolbarMain);
         listView = (ListView)findViewById(R.id.lvMain);
     }
-
+//giving title to our main activity
     private void initToolbar(){
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("Pill ID");
     }
-
+//setting up our switch statment with our 3 main tabs
     private void setupListView(){
 
         String[] title = getResources().getStringArray(R.array.Main);
@@ -91,7 +91,7 @@ public class MainActivity extends AppCompatActivity {
             descriptionArray = description;
             layoutInflater = LayoutInflater.from(context);
         }
-
+//setting up the images that we have selected for each section of the app so that the image is displayed next to the title
         @Override
         public int getCount() {
             return titleArray.length;
