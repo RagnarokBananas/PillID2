@@ -1,7 +1,5 @@
 package com.example.craig.camera;
 
-import com.example.craig.camera.CSPostConfig;
-import com.example.craig.camera.CSPostResult;
 import com.google.api.client.http.HttpTransport;
 import com.google.api.client.http.GenericUrl;
 import com.google.api.client.http.HttpRequestInitializer;
@@ -12,7 +10,7 @@ import com.google.api.client.json.JsonFactory;
 
 import java.io.IOException;
 
-
+//This is copied code from https://github.com/shashir
 public final class CSApi {
   public static final String BASE_URL = "https://api.cloudsightapi.com";
   private static final String IMAGE_REQUESTS_PATH = "/image_requests";
