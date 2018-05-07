@@ -34,14 +34,14 @@ public class Schedule extends AppCompatActivity {
         setupListView();
     }
 
-
+//seting proper layout of days of the week
     private void setupUIViews() {
         toolbar = (Toolbar) findViewById(R.id.ToolbarSchedule);
         listView = (ListView) findViewById(R.id.lvWeek);
         sharedPreferences = getSharedPreferences("MY_DAY", MODE_PRIVATE);
 
     }
-
+//setting toolbar and giving title to display
     private void initToolbar() {
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("Schedule");
@@ -49,7 +49,7 @@ public class Schedule extends AppCompatActivity {
 
     }
 
-
+//setting up a switch statement for pressing the selected day of the week and allowing to open that days schedule
     private void setupListView() {
         String[] week = getResources().getStringArray(R.array.Schedule);
         WeekAdapter adapter = new WeekAdapter(this, R.layout.activity_schedule_single_item, week);
@@ -109,7 +109,7 @@ public class Schedule extends AppCompatActivity {
         private LayoutInflater layoutInflater;
         private String[] week = new String[]{};
 
-
+//creating the week adapter to pull from the proper arrays
         public WeekAdapter(Context context, int resource, String[] objects) {
             super(context, resource, objects);
             this.resource = resource;
@@ -117,7 +117,7 @@ public class Schedule extends AppCompatActivity {
             layoutInflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         }
 
-
+//setting up the first letter image view layout to allow for clean interface
         @Override
         public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
             ViewHolder holder;
@@ -145,7 +145,7 @@ public class Schedule extends AppCompatActivity {
     }
 
     @Override
-
+//allowing you to press the back arrow in the app to return you to main
     public boolean onOptionsItemSelected(MenuItem item) {
         switch(item.getItemId()){
             case android.R.id.home : {

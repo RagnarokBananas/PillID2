@@ -17,7 +17,7 @@ public class Medications extends AppCompatActivity {
     ListView listview;
     Button Addbutton;
     EditText GetValue;
-    String[] Medications = new String[] {
+    String[] Medications = new String[] {//created a sample array to show functionality of the view layout
             "Atorvastatin",
             "Levothyroxine",
             "Lisinopril",
@@ -32,11 +32,11 @@ public class Medications extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_medications);
-
+//setting up the list view as well as the add button and text input
         listview = (ListView) findViewById(R.id.listView1);
         Addbutton = (Button) findViewById(R.id.button1);
         GetValue = (EditText) findViewById(R.id.editText1);
-
+//add new item to current array list
         final List< String > ListElementsArrayList = new ArrayList < String >
                 (Arrays.asList(Medications));
 

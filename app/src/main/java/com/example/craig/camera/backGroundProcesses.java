@@ -23,36 +23,42 @@ public class backGroundProcesses extends IntentService {
     public backGroundProcesses() {
         super("MyThread");
     }
-
+    //the method that get called at the start of the new thread
     @Override
     protected void onHandleIntent(Intent intent){
+        //checks which code has been sent
         int code = intent.getIntExtra("code",1);
         if (code==1) {
             csPost(intent);
-        }/*else if(code==2){
-            wmdPost(intent);
-        }*/
+        }
     }
+    //sends the picture to CloudSight and waits for a response
     public void csPost(Intent intent){
+        //creates a receiver that allows information to be sent to the main thread
         ResultReceiver receiver = intent.getParcelableExtra("receiver1");
+        //gets the file address from the input intent
         String address = intent.getStringExtra("uri");
+        //create a few things needed for the image post
+        //they needed to be called somewhere outside of the try/catch
         CSPostResult postResult;
         CSGetResult scoredResult = null;
+        //the thing that creates the post request
         CSApi api = new CSApi(
                 HTTP_TRANSPORT,
                 JSON_FACTORY,
                 API_KEY
         );
+        //looks for the file at the input address
         File savedImage = new File(address);
-
+        //logs whether or no the file is there
         if (!savedImage.exists()) {
             Log.e("file", "no file at that path");
         }
-
+        //configures the post
         CSPostConfig savedImageToPost = CSPostConfig.newBuilder()
                 .withImage(savedImage)
                 .build();
-
+        //trys to post and get the result from the API
         try {
             postResult = api.postImage(savedImageToPost);
             Thread.sleep(30000);
@@ -62,52 +68,10 @@ public class backGroundProcesses extends IntentService {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+        //the receiver that we created earlier requires a bundle to be passed back
+        //so we send the response from the API back in a bundle
         Bundle bundle = new Bundle();
         bundle.putString("message", scoredResult.getName());
         receiver.send(1, bundle);
     }
-
-
-    /*public void wmdPost(Intent intent){
-        Bundle bundle = new Bundle();
-        bundle.putString("placeholder","placeholder");
-        List<Integer> numberPlace = new ArrayList<Integer>();
-        ResultReceiver receiver = intent.getParcelableExtra("receiver2");
-        String foundLetters = intent.getStringExtra("string");
-        if (foundLetters == null){
-            receiver.send(3,bundle);
-        }
-        char[] spaceParse = foundLetters.toCharArray();
-        for(int x = 0; x<9; x++){
-            numberPlace.add(foundLetters.indexOf(x));
-        }
-        for(int y = 0; y < numberPlace.size(); y++){
-            if (numberPlace.get(y)>numberPlace.get(0)){
-                numberPlace.set(0,numberPlace.get(y));
-            }
-        }
-        int ctr = numberPlace.get(0);
-        while(spaceParse[ctr]!=' '){
-            ctr--;
-        }
-        ctr++;
-        foundLetters = foundLetters.substring(ctr,foundLetters.indexOf(" ",ctr));
-        String url = "https://www.drugs.com/imprints.php?imprint="+foundLetters+"&color=&shape=0";
-        Document doc = null;
-        try {
-            doc = Jsoup.connect(url).get();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        Elements image = doc.select("img[src]");
-        String HTML = image.toString();
-        int nameHeader = HTML.indexOf("/images/pills/");
-        int startIndex = HTML.indexOf("alt=", nameHeader);
-        startIndex = startIndex + 5;
-        int endIndex = HTML.indexOf(" ", startIndex);
-        String pillName = HTML.substring(startIndex, endIndex);
-
-        bundle.putString("message",pillName);
-        receiver.send(2,bundle);
-    }*/
 }

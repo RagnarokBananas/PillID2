@@ -40,22 +40,23 @@ public class DetailDay extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail_day);
 
+        //need to initiate the toolbar and list view so the class can format properly
         setupUIViews();
         initToolbar();
         setupListView();
     }
 
-    private void setupUIViews() {
+    private void setupUIViews() {//calling the UiView and attaching it to the xml of the corresponding class
         listView = (ListView) findViewById(R.id.lvDayDetail);
         toolbar = (android.support.v7.widget.Toolbar) findViewById(R.id.ToolbarDayDetail);
     }
-    private void initToolbar(){
+    private void initToolbar(){//once again attaching the toolbar to the proper toolbar layout
             setSupportActionBar(toolbar);
             getSupportActionBar().setTitle(Schedule.sharedPreferences.getString(Schedule.SEL_DAY, null));
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }
 
-        private void setupListView(){
+        private void setupListView(){//calling all of the arrays for the weeking schedule as weel as the time break down.
             Monday = getResources().getStringArray(R.array.Monday);
             Tuesday = getResources().getStringArray(R.array.Tuesday);
             Wednesday = getResources().getStringArray(R.array.Wednesday);
@@ -73,7 +74,7 @@ public class DetailDay extends AppCompatActivity {
             Time7 = getResources().getStringArray(R.array.time7);
 
             String selected_day = Schedule.sharedPreferences.getString(Schedule.SEL_DAY, null);
-
+//creating an if/else loop for selecting any day of the week when you press it in the app. it will then refer to the time.
             if (selected_day.equalsIgnoreCase("Monday")) {
                 PreferredDay = Monday;
                 PreferredTime = Time1;
@@ -136,7 +137,7 @@ public class DetailDay extends AppCompatActivity {
                 if (convertView == null) {
                     convertView = layoutInflater.inflate(R.layout.day_detail_single_item, null);
                 }
-
+//converting the first letter from the designated file to allow for a nice letter layout function
                 subject = (TextView)convertView.findViewById(R.id.tvSubjectDayDetails);
                 time = (TextView)convertView.findViewById(R.id.tvTimeDayDetail);
                 letterImageView = (LetterImageView) convertView.findViewById(R.id.ivDayDetails);
@@ -152,7 +153,7 @@ public class DetailDay extends AppCompatActivity {
         }
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
+    public boolean onOptionsItemSelected(MenuItem item) {//allowing functionality to the back arrow button in the app
         switch(item.getItemId()){
             case android.R.id.home : {
                 onBackPressed();

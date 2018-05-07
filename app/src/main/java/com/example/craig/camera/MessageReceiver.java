@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.ResultReceiver;
 
+//required class for sending messages between threads
 @SuppressLint("ParcelCreator")
 public class MessageReceiver extends ResultReceiver{
     private Camera.Message message;
